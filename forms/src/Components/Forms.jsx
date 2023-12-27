@@ -102,6 +102,20 @@ export default function Forms() {
     return err;
   };
 
+  const phoneErrorHandler = ()=>{
+    if(formError.phone){
+      return(
+        <p className="err">Enter Your Phone Number</p>
+      )
+    }else if (formError.phoneLength){
+      return(
+        <p className="err">Enter 10-Digit Phone Number</p>
+      )
+    }else{
+      return("")
+    }
+  }
+
   return (
     <>
       <ToastContainer />
@@ -145,11 +159,7 @@ export default function Forms() {
           <div>
             <label> Phone : </label>
             <input type="number" name="phone" onChange={handleInputChange} />
-            {formError.phone ? (
-              <p className="err">Enter Your Phone Number</p>
-            ) : (
-              ""
-            )}
+            {phoneErrorHandler()}
           </div>
 
           <div>
